@@ -37,30 +37,29 @@ const eventSchema = new Schema({
     },
     location: {
         type: String
-        // venue_name: {
-        //     type: String,
-        //     required: true
-        // },
-        // address: {
-        //     type: String,
-        //     required: true
-        // },
-        // latitude: {
-        //     type: Number,
-        //     required: true
-        // },
-        // longitude: {
-        //     type: Number,
-        //     required: true
-        // }
     },
-    // tasks: [taskSchema]
 }, {timestamps: true})
 
 const Event = mongoose.model('Event', eventSchema)
 
 
 module.exports = Event
+// venue_name: {
+//     type: String,
+//     required: true
+// },
+// address: {
+//     type: String,
+//     required: true
+// },
+// latitude: {
+//     type: Number,
+//     required: true
+// },
+// longitude: {
+//     type: Number,
+//     required: true
+// }
 
 
     // const taskSchema = new Schema({

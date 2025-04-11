@@ -7,8 +7,10 @@ const verify = require('../middleware/verify-token')
 
 router.get('/', verify, async (req, res) => {
     try {
-        const events = Event.find({}, 'event_name')
-        res.json(events)
+        const events =  await Event.find({})
+        .populate('organizer')
+        .sort({createdAt: 'desc'})
+        res.status(200).json(events)
     } catch (err) {
         res.status(500).json({ err: err.message })
     }
@@ -37,14 +39,14 @@ router.post('/', verify, async (req, res) => {
 
 router.put('/:eventId', verify, async (req, res) => {
     try {
-        // const {start_date, end_date} = req.body
+        const {start_date, end_date} = req.body
         const event = await Event.findById(req.params.eventId)
 
         if(!event.organizer.equals(req.user._id)) {
             return res.status(403).send("You're not allowed to do that!")
         }
 
-        if(req.body.start_date && req.body.Dateend_date && new Date(req.body.start_date) >= new Date(req.body.end_date)) {
+        if(start_date && end_date && new Date(start_date) >= new Date(end_date)) {
             return res.status(400).json({ err: 'Start date must be earlier than end date'})
         }
 
@@ -58,6 +60,17 @@ router.put('/:eventId', verify, async (req, res) => {
         
     } catch (err) {
         res.status(500).json({ err: err.message })
+    }
+})
+
+router.get('/:eventId', verify, async (req, res) => {
+    try {
+        const event = await Event.findById(req.params.eventId).populate([
+            'organizer'
+        ])
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json({err: err.message})
     }
 })
 module.exports = router

@@ -30,7 +30,7 @@ if (!validator.isEmail(email)) {
       hashedPassword: bcrypt.hashSync(password, saltRounds)
     });
 
-    const payload = { username: user.username, _id: user._id };
+    const payload = { username: user.username, _id: user._id, firstName: user.firstName, lastName: user.lastName };
 
     const token = jwt.sign({ payload }, process.env.JWT_SECRET);
 

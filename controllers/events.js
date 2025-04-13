@@ -68,9 +68,27 @@ router.get('/:eventId', verify, async (req, res) => {
         const event = await Event.findById(req.params.eventId).populate([
             'organizer'
         ])
-        res.status(200).json(event)
+        res.status(200).json(event )
     } catch (err) {
         res.status(500).json({err: err.message})
     }
 })
+
+router.delete('/:eventId', verify, async (req, res) => {
+    try {
+        const event = await Event.findById(req.params.eventId)
+
+        if(!event.organizer.equals(req.user._id)) {
+            return res.status(403).send("You're not allowed to do that!")
+        }
+
+        const deletedEvent = await Event.findByIdAndDelete(req.params.eventId)
+        res.status(200).json(deletedEvent)
+    } catch (err) {
+        res.status(500).json({err: err.message})
+    }
+})
+
+
+
 module.exports = router

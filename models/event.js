@@ -21,7 +21,16 @@ const eventSchema = new Schema({
         type: String,
         required: true
     },
-    attendees: [String],
+    attendees: [{
+        _id: Schema.Types.ObjectId,
+        name: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+        }
+    }],
     category: {
         type: String,
         enum: ['weddings', 'sports', 'graduation party', 'baby shower', 'conference', 'arts & entertainment'],

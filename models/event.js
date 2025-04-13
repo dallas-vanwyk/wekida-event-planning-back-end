@@ -38,11 +38,11 @@ const eventSchema = new Schema({
     },
     start_date: {
         type: Date,
-        default: Date.now
+        required: true
     },
     end_date: {
         type: Date,
-        default: Date.now
+        required: true
     },
     location: {
         type: String

@@ -56,7 +56,7 @@ const { username, password } = req.body
       return res.status(401).json({ err: 'Invalid credentials.' });
     }
 
-    const payload = { username: user.username, _id: user._id };
+    const payload = { username: user.username, _id: user._id, firstName: user.firstName, lastName: user.lastName };
 
     const token = jwt.sign({ payload }, process.env.JWT_SECRET);
 

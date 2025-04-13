@@ -7,9 +7,11 @@ const verify = require('../middleware/verify-token')
 
 router.get('/', verify, async (req, res) => {
     try {
-        const events =  await Event.find({})
+        const userId = req.user._id
+
+        const events =  await Event.find({organizer: userId})
         .populate('organizer')
-        .sort({createdAt: 'desc'})
+        .sort({start_date: 'asc'})
         res.status(200).json(events)
     } catch (err) {
         res.status(500).json({ err: err.message })

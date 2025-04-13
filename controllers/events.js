@@ -91,6 +91,90 @@ router.delete('/:eventId', verify, async (req, res) => {
     }
 })
 
+router.post('/:eventId/attendees', verify, async (req, res) => {
+    try {
+        const { name, email } = req.body
+        const event = await Event.findById(req.params.eventId)
+
+        if (!event) {
+            return res.status(404).json({err: 'Event not found'})
+        }
+
+        if (!event.organizer.equals(req.user._id)) {
+            return res.status(403).send("You're not allowed to do that!")
+        }
+
+        const attendee = {
+            _id: new mongoose.Types.ObjectId(),
+            name,
+            email
+        }
+
+        event.attendees.push(attendee)
+        await event.save()
+
+        res.status(200).json(event.attendees)
+    } catch (err) {
+        res.status(500).json({err: err.message})
+    }
+})
+
+router.put('/:eventId/attendees/:attendeeId', verify, async (req, res) => {
+    try {
+        const { name, email } = req.body
+        const event = await Event.findById(req.params.eventId)
+
+        if (!event) {
+            return res.status(404).json({err: 'Event not found'})
+        }
+
+        if (!event.organizer.equals(req.user._id)) {
+            return res.status(403).send("You're not allowed to do that!")
+        }
+
+        const attendee = event.attendees.id(req.params.attendeeId)
+
+        if (!attendee) {
+            return res.status(404).json({ err: 'Attendee not found' })
+        }
+
+        if (name) attendee.name = name
+        if (email) attendee.email = email
+
+        await event.save()
+
+        res.status(200).json(attendee)
+    } catch (err) {
+        res.status(500).json({err: err.message})
+    }
+})
+
+
+router.delete('/:eventId/attendees/:attendeeId', verify, async (req, res) => {
+    try {
+        const event = await Event.findById(req.params.eventId)
+
+        if (!event) {
+            return res.status(404).json({ err: 'Event not found' })
+        }
+
+        if (!event.organizer.equals(req.user._id)) {
+            return res.status(403).send("You're not allowed to do that!")
+        }
+
+        const attendee = event.attendees/id(req.params.attendeeId)
+        if (!attendee) {
+            return res.status(404).json({ err: 'Attendee not found' })
+        }
+
+        attendee.remove()
+        await event.save()
+
+        res.status(200).json({ message: 'Attendee removed', attendees: event.attendees})
+    } catch (err) {
+        res.status(500).json({err: err.message})
+    }
+})
 
 
 module.exports = router

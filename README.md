@@ -1,8 +1,8 @@
-# Express JWT Auth Template
+# Wekida Event Planning Application - MERN Stack - Back End
 
 ## About
 
-This repo is an Express JWT Auth template meant to be paired with a front-end app utilizing JWT tokens.
+This repo the back end of the Wekida Event Planning Tool! See the [Front End Repo](https://github.com/dallas-vanwyk/wekida-event-planning-front-end?) for more details.
 
 ## Getting started
 

@@ -6,7 +6,7 @@
 <img src="path to your gif/video" style="width:100vw; height:100vh" alt="Text describing your video"/>
 
 ## Description
-Description of your game. Ex: Connect Four: a two player connection game. First player to get four of the same colored checkers in a row either horizontally, vertically or diagonally wins.
+Wekida is a collaborative event planning app designed to help organizers seamlessly create, manage, and share events with ease. Built with simplicity and efficiency in mind, Wekida empowers users to stay on top of event details, coordinate attendees, and keep everything in one place—whether it’s for work, celebration, or community. Named after the developers who brought it to life, Wekida reflects the spirit of teamwork and smart planning.
 
 ## Table of Contents
 * [Technologies Used](#technologiesused)

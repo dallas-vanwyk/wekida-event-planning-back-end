@@ -1,4 +1,5 @@
 // controllers/events.js
+// Events Router handles all requests from /events
 
 const express = require("express");
 const router = express.Router();
@@ -7,6 +8,7 @@ const Event = require("../models/event");
 
 const verify = require("../middleware/verify-token");
 
+// home/index/dashboard - show all events for the signed-in user
 router.get('/', verify, async (req, res) => {
     try {
         const userId = req.user._id
@@ -21,8 +23,7 @@ router.get('/', verify, async (req, res) => {
     };
 });
 
-
-
+// create event
 router.post("/", verify, async (req, res) => {
     try {
         console.log("Add Event Hit", req.body);
@@ -46,6 +47,7 @@ router.post("/", verify, async (req, res) => {
     };
 });
 
+// update event
 router.put("/:eventId", verify, async (req, res) => {
     try {
         const { start_date, end_date } = req.body;
@@ -67,6 +69,7 @@ router.put("/:eventId", verify, async (req, res) => {
     };
 });
 
+// event details page, edit event page
 router.get("/:eventId", verify, async (req, res) => {
     try {
         const event = await Event.findById(req.params.eventId).populate(["organizer"]);
@@ -76,6 +79,7 @@ router.get("/:eventId", verify, async (req, res) => {
     };
 });
 
+// delete event
 router.delete("/:eventId", verify, async (req, res) => {
     try {
         const event = await Event.findById(req.params.eventId);
@@ -90,7 +94,7 @@ router.delete("/:eventId", verify, async (req, res) => {
     };
 });
 
-
+// add attendees to event (?)
 router.post('/:eventId/attendees', verify, async (req, res) => {
     try {
         const { name, email } = req.body;
@@ -119,6 +123,7 @@ router.post('/:eventId/attendees', verify, async (req, res) => {
     };
 });
 
+// add attendees to event (?)
 router.put('/:eventId/attendees/:attendeeId', verify, async (req, res) => {
     try {
         const { name, email } = req.body;
@@ -149,7 +154,7 @@ router.put('/:eventId/attendees/:attendeeId', verify, async (req, res) => {
     };
 });
 
-
+// remove attendee from event
 router.delete('/:eventId/attendees/:attendeeId', verify, async (req, res) => {
     try {
         const event = await Event.findById(req.params.eventId);

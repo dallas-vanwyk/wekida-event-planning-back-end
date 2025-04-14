@@ -10,6 +10,7 @@ const User = require('../models/user');
 
 const saltRounds = 12;
 
+// sign up route
 router.post('/sign-up', async (req, res) => {
   try {
     const { username, email, firstName, lastName, password } = req.body;
@@ -42,6 +43,7 @@ router.post('/sign-up', async (req, res) => {
   };
 });
 
+// sign in route
 router.post('/sign-in', async (req, res) => {
   try {
     const { username, password } = req.body;

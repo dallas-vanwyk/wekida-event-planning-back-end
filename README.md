@@ -1,10 +1,78 @@
-# Express JWT Auth Template
+# Wekida Event Planning Application - MERN Stack - Back End
 
-## About
+#### This repo the back end of the Wekida Event Planning Tool! See the [Front End Repo](https://github.com/dallas-vanwyk/wekida-event-planning-front-end?) for more details.
+<img src="path to your game screenshot" alt="Description of Screenshot"/>
 
-This repo is an Express JWT Auth template meant to be paired with a front-end app utilizing JWT tokens.
+<img src="path to your gif/video" style="width:100vw; height:100vh" alt="Text describing your video"/>
 
-## Getting started
+## Description
+Wekida is a collaborative event planning app designed to help organizers seamlessly create, manage, and share events with ease. Built with simplicity and efficiency in mind, Wekida empowers users to stay on top of event details, coordinate attendees, and keep everything in one place—whether it’s for work, celebration, or community. Named after the developers who brought it to life, Wekida reflects the spirit of teamwork and smart planning.
+
+## Table of Contents
+* [Technologies Used](#technologiesused)
+* [Features](#features)
+* [Design](#design)
+* [Project Next Steps](#nextsteps)
+* [Deployed App](#deployment)
+* [About the Author](#author)
+* [How To Deploy](#howtodeploy)
+
+## <a name="technologiesused"></a>Technologies Used
+* JavaScript
+* Mongoose
+* Express
+* MongoDB
+* 
+* HTML5
+* CSS3
+
+
+## Features
+Users Feature 1
+Users Feature 2
+
+## Trello Planning Board
+- [Trello project planning](https://trello.com/b/J1Lp3aTZ/unit-3-project-wen-kier-dallas)
+
+## <a name="design"></a>Design
+* Descrition of what inspired your design. Ex: Design elements implemented using HTML5 and CSS3. 
+
+
+## <a name="nextsteps"></a>Project Next Steps
+#### List of Future Features
+* Allow the user to chose player one or player two.
+* Allow users to play against computer.
+* Add a timer
+* Add a scoreboard. 
+* Users can change the theme.
+
+## <a name="deployment"></a>Deployed Link
+[Netlify]([https://wonderful-brahmagupta-6a75d3.netlify.com](https://connect4pc.netlify.app/))
+
+* You can view the repository:
+[Github.com](https://github.com/Gr8ness21/Connect-4)
+* If unable to view please go live locally through VS Code
+
+## <a name="author"></a>About The Authors
+<!-- add short 'about' and link to LinkedIn -->
+Lead Front-End Developer and Designer: Wen Ow
+
+Lead Back-End Developer: Kier Roman
+
+Lead Scrum Project Manager: Dallas Van Wyk
+    
+## Works Cited:
+*https://stackoverflow.com/questions/24093290/what-does-the-question-mark-mean-in-javascript/24093304
+*https://www.w3schools.com/jquery/jquery_ref_events.asp
+*Understanding “this” in JQUERY: 
+* 	the this object doesn't change. It is the owner of the function. It is, in most cases like this, simply a node and you can reference all of its properties like this.className. (think of it as you would a node or whatnot that you get with document.getElementById). It is just the "owner" of the function. Therefore, you are just passing the this object to jQuery's $(). Conclusion: If you want to use jQuery functions for the current node, use $(this). But if you want to access the objects own properties (e.g. .name, className, .id), use simply this.
+- https://stackoverflow.com/questions/8469635/jquery-when-to-use-this-and-when-to-use-this
+
+* A constructor: A constructor in Java is a block of code similar to a method that's called when an instance of an object is created. Here are the key differences between aconstructor and a method: A constructor doesn't have a return type. ... Unlike methods, constructorsare not considered members of a class.
+- https://www.w3schools.com/java/java_constructors.asp
+
+
+## <a name="howtodeploy">How To Deploy
 
 Fork and clone this repository to your local machine.
 

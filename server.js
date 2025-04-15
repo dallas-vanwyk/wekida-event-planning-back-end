@@ -1,3 +1,5 @@
+// server.js
+
 // npm
 const dotenv = require('dotenv');
 dotenv.config();
@@ -10,7 +12,7 @@ const logger = require('morgan');
 // Import routers
 const authRouter = require('./controllers/auth');
 const usersRouter = require('./controllers/users');
-const eventsRouter = require('./controllers/events')
+const eventsRouter = require('./controllers/events');
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI);
@@ -27,7 +29,7 @@ app.use(logger('dev'));
 // Routes
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
-app.use('/events', eventsRouter)
+app.use('/events', eventsRouter);
 
 // Start the server and listen on port 3000
 app.listen(3000, () => {

@@ -25,26 +25,26 @@ router.get('/', verify, async (req, res) => {
 
 // create event
 router.post("/", verify, async (req, res) => {
-    try {
-        console.log("Add Event Hit", req.body);
+  try {
+    console.log("Add Event Hit", req.body);
 
-        const { event_title, organizer, description, attendees, category, start_date, end_date, location } = req.body;
-        const newEvent = await Event.create({
-            event_title,
-            organizer,
-            description,
-            attendees,
-            category,
-            start_date,
-            end_date,
-            location,
-        });
-        console.log(newEvent);
-
-        res.json(newEvent);
-    } catch (err) {
-        res.status(500).json({ err: err.message });
-    };
+    const { event_title, organizer, description, attendees, category, start_date, end_date, location } = req.body;
+    const newEvent = await Event.create({
+      event_title,
+      organizer,
+      description,
+      attendees,
+      category,
+      start_date,
+      end_date,
+      location,
+    });
+    console.log(newEvent);
+    res.json(newEvent);
+  } catch (err) {
+    console.log("Error creating event", err.message);
+    res.status(500).json({ err: err.message });
+  };
 });
 
 // update event
@@ -71,12 +71,16 @@ router.put("/:eventId", verify, async (req, res) => {
 
 // event details page, edit event page
 router.get("/:eventId", verify, async (req, res) => {
-    try {
-        const event = await Event.findById(req.params.eventId).populate(["organizer"]);
-        res.status(200).json(event);
-    } catch (err) {
-        res.status(500).json({ err: err.message });
-    };
+  try {
+    console.log("Get Event Hit", req.params.eventId);
+
+    const event = await Event.findById(req.params.eventId).populate(["organizer"]);
+    console.log(event);
+
+    res.status(200).json(event);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  };
 });
 
 // delete event

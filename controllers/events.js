@@ -30,9 +30,9 @@ router.post("/", verify, async (req, res) => {
       location,
     });
     console.log(newEvent);
-
     res.json(newEvent);
   } catch (err) {
+    console.log("Error creating event", err.message);
     res.status(500).json({ err: err.message });
   }
 });
@@ -60,7 +60,11 @@ router.put("/:eventId", verify, async (req, res) => {
 
 router.get("/:eventId", verify, async (req, res) => {
   try {
+    console.log("Get Event Hit", req.params.eventId);
+
     const event = await Event.findById(req.params.eventId).populate(["organizer"]);
+    console.log(event);
+
     res.status(200).json(event);
   } catch (err) {
     res.status(500).json({ err: err.message });

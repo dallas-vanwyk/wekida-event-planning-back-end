@@ -1,8 +1,14 @@
-
 // models/event.js
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
+const attendeeSchema = new Schema({
+     name: {  
+        type: String,
+        required: true,
+     }
+});
 
 const eventSchema = new Schema(
   {
@@ -24,12 +30,7 @@ const eventSchema = new Schema(
       type: String,
       required: true,
     },
-    attendees: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
+    attendees: [attendeeSchema],
     category: {
       type: String,
       enum: ["Wedding", "Sports", "Graduation Party", "Baby Shower", "Conference", "Arts & Entertainment"],
@@ -103,4 +104,3 @@ module.exports = Event;
 //     }
 // }, {timestamps: true})
 // Make guest Schema a child of the event schema that is just a list of creatable and deletable names
-

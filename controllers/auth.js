@@ -10,18 +10,18 @@ const saltRounds = 12;
 
 router.post('/sign-up', async (req, res) => {
   try {
-const { username, email, firstName, lastName, password } = req.body
+    const { username, email, firstName, lastName, password } = req.body
 
-if (!validator.isEmail(email)) {
-  return res.status(400).json({err: 'Invalid email format'})
-}
+    if (!validator.isEmail(email)) {
+      return res.status(400).json({ err: 'Invalid email format' })
+    }
 
     const userInDatabase = await User.findOne({ username });
-    
+
     if (userInDatabase) {
-      return res.status(409).json({err: 'Username already taken.'});
+      return res.status(409).json({ err: 'Username already taken.' });
     }
-    
+
     const user = await User.create({
       firstName,
       lastName,
@@ -42,7 +42,7 @@ if (!validator.isEmail(email)) {
 
 router.post('/sign-in', async (req, res) => {
   try {
-const { username, password } = req.body
+    const { username, password } = req.body
 
     const user = await User.findOne({ username });
     if (!user) {

@@ -8,6 +8,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const logger = require('morgan');
+const router = express.Router();
 
 // Import routers
 const authRouter = require('./controllers/auth');
@@ -24,9 +25,9 @@ mongoose.connection.on('connected', () => {
 // Middleware
 // --- Recommended Detailed CORS Configuration ---
 const allowedOrigins = [
-  // 'ENTER NETLIFY URL HERE', 
-  'https://wekida.netlify.app/'
-  // Add local dev URL if needed: 'http://localhost:3000',
+  'https://wekida.netlify.app/',
+  'http://localhost:5173',
+  'http://localhost:3000'
 ];
 const corsOptions = {
   origin: function (origin, callback) {
@@ -52,8 +53,16 @@ app.use(logger('dev'));
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
+// router.get('/', (req, res) => {
+//   res.send('is this thing on');
+// });
 
-// Start the server and listen on port 3000
-app.listen(3000, () => {
+// Start the server
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   console.log('The express app is ready!');
 });
+// app.listen(3000, () => {
+//   console.log('The express app is ready!');
+// });

@@ -8,7 +8,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const logger = require('morgan');
-const router = express.Router();
+// const router = express.Router();
 
 // Import routers
 const authRouter = require('./controllers/auth');
@@ -53,15 +53,15 @@ app.use(logger('dev'));
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
-// router.get('/', (req, res) => {
-//   res.send('is this thing on');
-// });
+app.get('/', (req, res) => {
+  res.send('is this thing on'); // test messsage to make sure server is running etc
+});
 
 // Start the server
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log('The express app is ready!');
+  console.log('The express app is ready! Listening on port', PORT);
 });
 // app.listen(3000, () => {
 //   console.log('The express app is ready!');

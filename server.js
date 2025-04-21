@@ -25,7 +25,7 @@ mongoose.connection.on('connected', () => {
 // Middleware
 // --- Recommended Detailed CORS Configuration ---
 const allowedOrigins = [
-  'https://wekida.netlify.app/',
+  'https://wekida.netlify.app',
   'http://localhost:5173',
   'http://localhost:3000'
 ];
@@ -63,6 +63,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('The express app is ready! Listening on port', PORT);
 });
-// app.listen(3000, () => {
-//   console.log('The express app is ready!');
-// });
+

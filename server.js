@@ -8,7 +8,6 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const logger = require('morgan');
-// const router = express.Router();
 
 // Import routers
 const authRouter = require('./controllers/auth');
@@ -31,12 +30,12 @@ const allowedOrigins = [
 ];
 const corsOptions = {
   origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-          callback(null, true);
-      } else {
-          console.warn(`CORS blocked origin: ${origin}`);
-          callback(new Error('Not allowed by CORS'));
-      };
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.warn(`CORS blocked origin: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    };
   },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', // Explicitly allow methods including OPTIONS
   allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', // Allow common headers + Authorization
@@ -54,7 +53,7 @@ app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 app.get('/', (req, res) => {
-  res.send('is this thing on'); // test messsage to make sure server is running etc
+  res.send('is this thing on'); // test messsage to make sure server is deployed
 });
 
 // Start the server

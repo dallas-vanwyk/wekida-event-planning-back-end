@@ -1,6 +1,5 @@
 // controllers/events.js
 
-// events router handles all requests from /events
 const express = require("express");
 const router = express.Router();
 
